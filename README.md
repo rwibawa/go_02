@@ -4,23 +4,27 @@
 ```bash
 $ cd $GOPATH
 
-$ vi app/entry.go
+# main package
+$ vi src/app/entry.go
 $ go install app
 app/entry.go ==> main()
 
+# add package greet
 $ vi src/greet/day.go
 $ go run src/app/entry.go 
 Hey, Good Morning
 
+# nested package
 $ vi src/greet/de/day.go
 $ go run src/app/entry.go 
 app/entry.go ==> main()
 Hey, Good Morning
 Hallo, Guten Morgen
 
-NYCMAC-02900:workspace_go rwibawa$ ll pkg/darwin_amd64/g
+$ ls -lah pkg/darwin_amd64/g
 golang.org/ greet/      greet.a     
 
+# run all
 $ vi src/app/version.go
 $ go run src/app/*.go 
 app/entry.go ==> main()
@@ -33,6 +37,7 @@ Hey, Good Morning
 Hallo, Guten Morgen
 version ===>  1.0.0
 
+# implicit init() method
 $ vi src/app/f.go
 $ go run src/app/*.go
 app/entry.go ==> init() [1]
@@ -43,6 +48,7 @@ Hallo, Guten Morgen
 version ===>  1.0.0
 2 2 1
 
+# package alias
 $ vi src/app/entry.go
 $ go run src/app/*.go
 greet/greet/child.go ===> init()
@@ -55,6 +61,7 @@ version ===>  1.0.0
 2 2 1
 Hey there. I am child.
 
+# import package from github
 $ go get -u github.com/jinzhu/gorm
 $ cat src/app/entry.go
 ```
