@@ -7,6 +7,7 @@ $ cd $GOPATH
 # main package
 $ vi src/app/entry.go
 $ go install app
+$ app
 app/entry.go ==> main()
 
 # add package greet
